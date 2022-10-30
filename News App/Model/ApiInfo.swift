@@ -8,5 +8,5 @@
 import Foundation
 
 class NewsApi {
-    static let apiKey = ""
+    static let apiKey = "lastTest"
 }
