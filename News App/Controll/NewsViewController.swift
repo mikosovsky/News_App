@@ -10,13 +10,15 @@ import UIKit
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
+    let newsModel = NewsModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         searchTextField.delegate = self
-        
+        newsModel.delegate = self
+        newsModel.getNewsData()
     }
     
 }
@@ -36,7 +38,7 @@ extension NewsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let phrase = textField.text {
-            
+            newsModel.getNewsData(phrase: phrase)
         }
         textField.text = ""
     }
@@ -48,4 +50,15 @@ extension NewsViewController: UITextFieldDelegate {
             return false
         }
     }
+}
+
+//MARK: - NewsModelDelegate
+
+extension NewsViewController: NewsModelDelegate {
+    
+    func didDecodedData(_ newsData: NewsDataModel) {
+        print(newsData)
+    }
+    
+    
 }

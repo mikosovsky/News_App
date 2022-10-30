@@ -20,7 +20,7 @@ class RequestModel {
     
     func makeRequest(bodyString: String) async {
         
-        let urlString = urlString + "&apiKey=" + apiKey
+        let urlString = urlString + bodyString + apiKey
         let url = URL(string: urlString)!
         let ses = URLSession(configuration: .default)
         do {
