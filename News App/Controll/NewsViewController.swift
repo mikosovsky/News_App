@@ -23,6 +23,8 @@ class NewsViewController: UIViewController {
         newsModel.delegate = self
         newsTableView.dataSource = self
         newsModel.getNewsData()
+        newsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        newsTableView.register(UINib(nibName: K.NewsTableView.cellNibName, bundle: nil), forCellReuseIdentifier: K.NewsTableView.cellIdentifier)
     }
     
     
@@ -82,8 +84,10 @@ extension NewsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = newsArticlesData[indexPath.row].title
+        let news = newsArticlesData[indexPath.row]
+        let cell = newsTableView.dequeueReusableCell(withIdentifier: K.NewsTableView.cellIdentifier, for: indexPath) as! NewsCell
+        cell.titleLabel.text = news.title
+        cell.descriptionLabel.text = news.description
         return cell
     }
     
