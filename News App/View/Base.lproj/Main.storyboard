@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--News-->
+        <!--News View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NewsViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -42,6 +42,7 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="arrow.triangle.2.circlepath" catalog="system"/>
                                                 <connections>
                                                     <action selector="refreshPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vPK-wL-pWM"/>
+                                                    <segue destination="gE3-Or-do1" kind="show" id="Kqz-Zq-awm"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -70,9 +71,8 @@
                             <constraint firstItem="VVG-Dc-3hE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="p6M-3M-2MX"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="News" image="newspaper" catalog="system" landscapeImage="newspaper" id="mb6-4E-VHR">
-                        <imageReference key="selectedImage" image="newspaper.fill" catalog="system"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="A2L-Je-e9d"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="newsTableView" destination="8pJ-OU-RbK" id="In0-df-8ro"/>
@@ -81,7 +81,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1944.6153846153845" y="-33.412322274881518"/>
+            <point key="canvasLocation" x="2986.1538461538462" y="-33.412322274881518"/>
+        </scene>
+        <!--News Web View Controller-->
+        <scene sceneID="EjM-Re-tH7">
+            <objects>
+                <viewController id="gE3-Or-do1" customClass="NewsWebViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oTw-k3-Tpj">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="197-XB-Xmo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GGV-Ge-Cjd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2uv-Lb-p3K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3853.8461538461538" y="-33.412322274881518"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1cw-l4-RhK">
@@ -94,7 +110,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Smq-9x-clF"/>
+                        <segue destination="VL1-RI-ygT" kind="relationship" relationship="viewControllers" id="Smq-9x-clF"/>
                         <segue destination="gG9-a1-5ew" kind="relationship" relationship="viewControllers" id="ZKf-qz-Rmm"/>
                         <segue destination="Mh5-IK-0s9" kind="relationship" relationship="viewControllers" id="XLf-2g-frf"/>
                     </connections>
@@ -135,6 +151,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ip-wQ-uQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1945" y="717"/>
+        </scene>
+        <!--News-->
+        <scene sceneID="w63-ia-w2g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VL1-RI-ygT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" image="newspaper" catalog="system" landscapeImage="newspaper" id="mb6-4E-VHR">
+                        <imageReference key="selectedImage" image="newspaper.fill" catalog="system"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kdk-TI-WOf">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="QoZ-Ak-7IC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XTs-hv-ko6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2056.9230769230767" y="-33.412322274881518"/>
         </scene>
     </scenes>
     <resources>

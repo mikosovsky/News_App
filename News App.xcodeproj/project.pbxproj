@@ -23,6 +23,7 @@
 		D09349F3290C6ACF005481BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D09349F1290C6ACF005481BA /* LaunchScreen.storyboard */; };
 		D0A99B8F291934CF009ACE7A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A99B8D291934CF009ACE7A /* NewsCell.swift */; };
 		D0A99B90291934CF009ACE7A /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A99B8E291934CF009ACE7A /* NewsCell.xib */; };
+		D0A99B922919B360009ACE7A /* NewsWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A99B912919B360009ACE7A /* NewsWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D09349F4290C6ACF005481BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0A99B8D291934CF009ACE7A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		D0A99B8E291934CF009ACE7A /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		D0A99B912919B360009ACE7A /* NewsWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				D09349EA290C6ACD005481BA /* NewsViewController.swift */,
 				D00A3C16290DCEBE006A6BBD /* WeatherViewController.swift */,
 				D00A3C18290DCED7006A6BBD /* CurrenciesViewController.swift */,
+				D0A99B912919B360009ACE7A /* NewsWebViewController.swift */,
 			);
 			path = Controll;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				D00A3C20290F0A20006A6BBD /* NewsModel.swift in Sources */,
 				D00A3C22290F0AD8006A6BBD /* DataModels.swift in Sources */,
 				D00A3C19290DCED7006A6BBD /* CurrenciesViewController.swift in Sources */,
+				D0A99B922919B360009ACE7A /* NewsWebViewController.swift in Sources */,
 				D09349EB290C6ACD005481BA /* NewsViewController.swift in Sources */,
 				D00A3C17290DCEBE006A6BBD /* WeatherViewController.swift in Sources */,
 				D02DA984291269F3009946D9 /* Constants.swift in Sources */,

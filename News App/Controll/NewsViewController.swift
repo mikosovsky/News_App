@@ -28,6 +28,18 @@ class NewsViewController: UIViewController {
         newsModel.getNewsData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     @IBAction func refreshPressed(_ sender: UIButton) {
         
         newsModel.getNewsData()
@@ -76,7 +88,6 @@ extension NewsViewController: NewsModelDelegate {
     func didDecodedData(_ newsArticlesData: [NewsArticleData]) {
         
         self.newsArticlesData = newsArticlesData
-        print(newsArticlesData)
         newsTableView.reloadData()
         
     }
