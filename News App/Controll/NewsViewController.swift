@@ -22,11 +22,18 @@ class NewsViewController: UIViewController {
         searchTextField.delegate = self
         newsModel.delegate = self
         newsTableView.dataSource = self
-        newsModel.getNewsData()
+        
         newsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         newsTableView.register(UINib(nibName: K.NewsTableView.cellNibName, bundle: nil), forCellReuseIdentifier: K.NewsTableView.cellIdentifier)
+        newsModel.getNewsData()
     }
     
+    @IBAction func refreshPressed(_ sender: UIButton) {
+        
+        newsModel.getNewsData()
+        var indexPath = NSIndexPath(row: 0, section: 0)
+        newsTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
+    }
     
     
 }
@@ -47,6 +54,8 @@ extension NewsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let phrase = textField.text {
             newsModel.getNewsData(phrase: phrase)
+            var indexPath = NSIndexPath(row: 0, section: 0)
+            newsTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
         textField.text = ""
     }
