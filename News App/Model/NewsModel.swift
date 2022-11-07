@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NewsModelDelegate {
-    func didDecodedData(_ newsData:NewsDataModel)
+    func didDecodedData(_ newsArticleData:[NewsArticleData])
 }
 
 class NewsModel {
@@ -33,6 +33,8 @@ class NewsModel {
         
     }
     
+    // parsing data to codable class and then to class easy to use
+    
     func parseJSON(_ data:Data) {
         
         let decoder = JSONDecoder()
@@ -40,7 +42,12 @@ class NewsModel {
         do {
             
             let decodedData = try decoder.decode(NewsDataModel.self, from: data)
-            delegate?.didDecodedData(decodedData)
+            if decodedData.status == K.NewsApi.okStatus {
+                let newsArticlesData = NDMtoNAD(decodedData)
+                delegate?.didDecodedData(newsArticlesData)
+            } else {
+                
+            }
             
             
         } catch {
@@ -49,11 +56,33 @@ class NewsModel {
         
     }
     
+    //Translator of NewsDataModel to [NewsArticleData]
+    
+    func NDMtoNAD(_ newsDataModel:NewsDataModel) -> [NewsArticleData] {
+        
+        var newsArticlesData: [NewsArticleData] = []
+        newsDataModel.articles.forEach { article in
+            let source = article.source.name
+            let author = article.author
+            let title = article.title
+            let description = article.description
+            let url = article.url
+            let urlToImage = article.urlToImage
+            let publishedAt = article.publishedAt
+            let newsArticleData = NewsArticleData(source: source, author: author, title: title, description: description, url: url, urlToImage: urlToImage, publishedAt: publishedAt)
+            newsArticlesData.append(newsArticleData)
+        }
+        return newsArticlesData
+        
+    }
+    
     init() {
         self.requestModel = RequestModel(apiKey: apiKey, urlString: urlString)
         requestModel.delegate = self
     }
 }
+
+//MARK: - RequestModelDelegate
 
 extension NewsModel: RequestModelDelegate {
     

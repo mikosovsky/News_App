@@ -10,7 +10,10 @@ import UIKit
 class NewsViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
-    let newsModel = NewsModel()
+    @IBOutlet weak var newsTableView: UITableView!
+
+    let newsModel: NewsModel = NewsModel()
+    var newsArticlesData: [NewsArticleData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +21,11 @@ class NewsViewController: UIViewController {
         
         searchTextField.delegate = self
         newsModel.delegate = self
+        newsTableView.dataSource = self
         newsModel.getNewsData()
     }
+    
+    
     
 }
 
@@ -56,9 +62,29 @@ extension NewsViewController: UITextFieldDelegate {
 
 extension NewsViewController: NewsModelDelegate {
     
-    func didDecodedData(_ newsData: NewsDataModel) {
-        print(newsData)
+    func didDecodedData(_ newsArticlesData: [NewsArticleData]) {
+        
+        self.newsArticlesData = newsArticlesData
+        print(newsArticlesData)
+        newsTableView.reloadData()
+        
     }
     
+    
+}
+
+//MARK: - UITableViewDataSource
+
+extension NewsViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsArticlesData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = newsArticlesData[indexPath.row].title
+        return cell
+    }
     
 }

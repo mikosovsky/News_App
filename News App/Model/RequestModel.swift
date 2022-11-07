@@ -23,9 +23,17 @@ class RequestModel {
         let urlString = urlString + bodyString + apiKey
         let url = URL(string: urlString)!
         let ses = URLSession(configuration: .default)
+        let dispatchGroup = DispatchGroup()
         do {
+            
+            dispatchGroup.enter()
             let (data, _) = try await ses.data(from: url)
-            delegate?.didGetData(data)
+            dispatchGroup.leave()
+            
+            dispatchGroup.notify(queue: .main) {
+                self.delegate?.didGetData(data)
+            }
+            
         } catch {
             print(error)
         }
