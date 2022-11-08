@@ -11,13 +11,15 @@ class NewsViewController: UIViewController {
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var newsTableView: UITableView!
-
+    
     let newsModel: NewsModel = NewsModel()
     var newsArticlesData: [NewsArticleData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        searchTextField.layer.cornerRadius = searchTextField.frame.size.height/2.0
+        searchTextField.clipsToBounds = true
         
         searchTextField.delegate = self
         newsModel.delegate = self
@@ -43,8 +45,7 @@ class NewsViewController: UIViewController {
     @IBAction func refreshPressed(_ sender: UIButton) {
         
         newsModel.getNewsData()
-        var indexPath = NSIndexPath(row: 0, section: 0)
-        newsTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
+        
     }
     
     
@@ -65,9 +66,9 @@ extension NewsViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let phrase = textField.text {
+            
             newsModel.getNewsData(phrase: phrase)
-            var indexPath = NSIndexPath(row: 0, section: 0)
-            newsTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
+            
         }
         textField.text = ""
     }
@@ -104,6 +105,7 @@ extension NewsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let news = newsArticlesData[indexPath.row]
         let cell = newsTableView.dequeueReusableCell(withIdentifier: K.NewsTableView.cellIdentifier, for: indexPath) as! NewsCell
         cell.titleLabel.text = news.title
