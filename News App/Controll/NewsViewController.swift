@@ -57,6 +57,7 @@ class NewsViewController: UIViewController {
     //func to set up newsTableView
     func newsTableViewSetUp() {
         newsTableView.dataSource = self
+        newsTableView.delegate = self
         newsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         newsTableView.register(UINib(nibName: K.NewsTableView.cellNibName, bundle: nil), forCellReuseIdentifier: K.NewsTableView.cellIdentifier)
     }
@@ -128,4 +129,13 @@ extension NewsViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+//MARK: - UITableViewDelegate
+
+extension NewsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "cellToWeb", sender: self)
+    }
 }

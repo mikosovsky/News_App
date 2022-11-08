@@ -20,6 +20,7 @@ class NewsCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         cellView.layer.cornerRadius = 10
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
