@@ -17,31 +17,25 @@ class NewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        // Do any additional setup after loading the view.
         searchTextFieldSetUp()
         newsTableViewSetUp()
         newsModelSetUp()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @IBAction func refreshPressed(_ sender: UIButton) {
-        
         newsModel.getNewsData()
-        
     }
     
     // func to set up searchTextField
@@ -107,8 +101,11 @@ extension NewsViewController: NewsModelDelegate {
     func didDecodedData(_ newsArticlesData: [NewsArticleData]) {
         
         self.newsArticlesData = newsArticlesData
-        newsTableView.reloadData()
-        
+        newsTableView.reloadSections([0], with: .top)
+        if newsArticlesData.count > 0 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            newsTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
     }
     
     
