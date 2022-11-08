@@ -18,18 +18,12 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        searchTextField.layer.cornerRadius = searchTextField.frame.size.height/2.0
-        searchTextField.clipsToBounds = true
-        searchTextField.borderStyle = .none
-        searchTextField.setLeftPaddingPoints(searchTextField.frame.size.height/2.0)
-        searchTextField.setRightPaddingPoints(searchTextField.frame.size.height/2.0)
-        searchTextField.delegate = self
-        newsModel.delegate = self
-        newsTableView.dataSource = self
         
-        newsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        newsTableView.register(UINib(nibName: K.NewsTableView.cellNibName, bundle: nil), forCellReuseIdentifier: K.NewsTableView.cellIdentifier)
-        newsModel.getNewsData()
+        searchTextFieldSetUp()
+        newsTableViewSetUp()
+        newsModelSetUp()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +44,28 @@ class NewsViewController: UIViewController {
         
     }
     
+    // func to set up searchTextField
+    func searchTextFieldSetUp() {
+        searchTextField.layer.cornerRadius = searchTextField.frame.size.height/2.0
+        searchTextField.clipsToBounds = true
+        searchTextField.borderStyle = .none
+        searchTextField.setLeftPaddingPoints(searchTextField.frame.size.height/2.0)
+        searchTextField.setRightPaddingPoints(searchTextField.frame.size.height/2.0)
+        searchTextField.delegate = self
+    }
+    
+    //func to set up newsModel
+    func newsModelSetUp() {
+        newsModel.delegate = self
+        newsModel.getNewsData()
+    }
+    
+    //func to set up newsTableView
+    func newsTableViewSetUp() {
+        newsTableView.dataSource = self
+        newsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        newsTableView.register(UINib(nibName: K.NewsTableView.cellNibName, bundle: nil), forCellReuseIdentifier: K.NewsTableView.cellIdentifier)
+    }
     
 }
 

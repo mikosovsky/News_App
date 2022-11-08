@@ -75,9 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				D09349EA290C6ACD005481BA /* NewsViewController.swift */,
+				D0A99B912919B360009ACE7A /* NewsWebViewController.swift */,
 				D00A3C16290DCEBE006A6BBD /* WeatherViewController.swift */,
 				D00A3C18290DCED7006A6BBD /* CurrenciesViewController.swift */,
-				D0A99B912919B360009ACE7A /* NewsWebViewController.swift */,
 			);
 			path = Controll;
 			sourceTree = "<group>";
