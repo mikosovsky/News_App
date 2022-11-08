@@ -20,7 +20,9 @@ class NewsViewController: UIViewController {
         // Do any additional setup after loading the view.
         searchTextField.layer.cornerRadius = searchTextField.frame.size.height/2.0
         searchTextField.clipsToBounds = true
-        
+        searchTextField.borderStyle = .none
+        searchTextField.setLeftPaddingPoints(searchTextField.frame.size.height/2.0)
+        searchTextField.setRightPaddingPoints(searchTextField.frame.size.height/2.0)
         searchTextField.delegate = self
         newsModel.delegate = self
         newsTableView.dataSource = self
