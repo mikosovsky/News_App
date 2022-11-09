@@ -18,6 +18,9 @@ class WeatherViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         locationManagerSetUp()
+        weatherModel.delegate = self
+        weatherModel.getWeatherData(city: "Poznan")
+        weatherModel.getWeatherData(lat: "52.17", lon: "52.3")
     }
     
     //func to set up locationManager
@@ -25,7 +28,7 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        weatherModel.getWeatherData(city: "Poznan")
+        
     }
 
 }
@@ -49,3 +52,14 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
+//MARK: - WeatherModelDelegate
+
+extension WeatherViewController: WeatherModelDelegate {
+    func didDecodedData(_ weatherData: WeatherData) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let currentTime = formatter.string(from: weatherData.sunset)
+        print(currentTime)
+        print(weatherData.sunset)
+    }
+}
