@@ -27,11 +27,13 @@ class NewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
     }
     
     @IBAction func refreshPressed(_ sender: UIButton) {
@@ -66,8 +68,9 @@ class NewsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.cellToWeb {
             if let id = newsTableView.indexPathForSelectedRow?.row, let url = newsArticlesData[id].url {
-                    let controller = segue.destination as! NewsWebViewController
-                    controller.url = url
+                let controller = segue.destination as! NewsWebViewController
+                controller.url = url
+                self.tabBarController?.tabBar.isHidden = true
             }
         }
     }
