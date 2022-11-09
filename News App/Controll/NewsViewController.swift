@@ -115,7 +115,7 @@ extension NewsViewController: NewsModelDelegate {
     func didDecodedData(_ newsArticlesData: [NewsArticleData]) {
         
         self.newsArticlesData = newsArticlesData
-        newsTableView.reloadSections([0], with: .top)
+        newsTableView.reloadSections([0], with: .bottom)
         if newsArticlesData.count > 0 {
             let indexPath = IndexPath(row: 0, section: 0)
             newsTableView.scrollToRow(at: indexPath, at: .top, animated: true)
