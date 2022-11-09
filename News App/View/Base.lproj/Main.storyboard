@@ -93,10 +93,29 @@
                     <view key="view" contentMode="scaleToFill" id="oTw-k3-Tpj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOw-3b-a6Z">
+                                <rect key="frame" x="0.0" y="47" width="390" height="714"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="197-XB-Xmo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="197-XB-Xmo" firstAttribute="trailing" secondItem="QOw-3b-a6Z" secondAttribute="trailing" id="4Dk-Ml-41Z"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="QOw-3b-a6Z" secondAttribute="bottom" id="JNV-uZ-Qsk"/>
+                            <constraint firstItem="QOw-3b-a6Z" firstAttribute="top" secondItem="197-XB-Xmo" secondAttribute="top" id="S6N-pv-Aot"/>
+                            <constraint firstItem="QOw-3b-a6Z" firstAttribute="leading" secondItem="197-XB-Xmo" secondAttribute="leading" id="Ymk-si-HUy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GGV-Ge-Cjd"/>
+                    <connections>
+                        <outlet property="webView" destination="QOw-3b-a6Z" id="6GY-1u-R9y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2uv-Lb-p3K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

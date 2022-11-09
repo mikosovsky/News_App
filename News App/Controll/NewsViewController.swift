@@ -62,6 +62,16 @@ class NewsViewController: UIViewController {
         newsTableView.register(UINib(nibName: K.NewsTableView.cellNibName, bundle: nil), forCellReuseIdentifier: K.NewsTableView.cellIdentifier)
     }
     
+    //func to pass data through segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.cellToWeb {
+            if let id = newsTableView.indexPathForSelectedRow?.row, let url = newsArticlesData[id].url {
+                    let controller = segue.destination as! NewsWebViewController
+                    controller.url = url
+            }
+        }
+    }
+    
 }
 
 //MARK: - UITextFieldDelegate
@@ -135,7 +145,8 @@ extension NewsViewController: UITableViewDataSource {
 
 extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "cellToWeb", sender: self)
+        if let _ = newsArticlesData[indexPath.row].url {
+            performSegue(withIdentifier: K.Segues.cellToWeb, sender: self)
+        }
     }
 }

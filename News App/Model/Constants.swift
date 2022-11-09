@@ -15,4 +15,7 @@ class K {
         static let cellNibName = "NewsCell"
         static let cellIdentifier = "ReusableCell"
     }
+    class Segues {
+        static let cellToWeb = "cellToWeb"
+    }
 }
