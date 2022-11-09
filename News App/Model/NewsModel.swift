@@ -77,7 +77,7 @@ class NewsModel {
     }
     
     init() {
-        self.requestModel = RequestModel(apiKey: apiKey, urlString: urlString)
+        requestModel = RequestModel(apiKey: apiKey, urlString: urlString)
         requestModel.delegate = self
     }
 }

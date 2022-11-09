@@ -10,7 +10,8 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
 
-    let locationManager = CLLocationManager()
+    let locationManager: CLLocationManager = CLLocationManager()
+    let weatherModel: WeatherModel = WeatherModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        weatherModel.getWeatherData(city: "Poznan")
     }
 
 }
