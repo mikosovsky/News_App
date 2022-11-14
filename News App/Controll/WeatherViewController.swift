@@ -57,9 +57,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
 extension WeatherViewController: WeatherModelDelegate {
     func didDecodedData(_ weatherData: WeatherData) {
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateFormat = "HH:mm"
         let currentTime = formatter.string(from: weatherData.sunset)
         print(currentTime)
         print(weatherData.sunset)
+        print(weatherData.cityName)
     }
 }

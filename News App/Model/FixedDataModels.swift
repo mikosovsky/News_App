@@ -28,8 +28,19 @@ struct WeatherData {
     let humidity: Int
     let weatherType: String
     let weatherDescription: String
-    let sunrise: Date
-    let sunset: Date
+    let sunriseUTC: Int64
+    let sunsetUTC: Int64
+    let timezone: Int64
+    var sunrise: Date {
+        let sunriseInt = sunriseUTC + timezone
+        let sunrise = Date(timeIntervalSince1970: TimeInterval(sunriseInt))
+        return sunrise
+    }
+    var sunset: Date {
+        let sunsetInt = sunsetUTC + timezone
+        let sunset = Date(timeIntervalSince1970: TimeInterval(sunsetInt))
+        return sunset
+    }
     let weatherID: Int
     var weatherImageName: String {
         switch weatherID {

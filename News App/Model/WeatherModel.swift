@@ -52,9 +52,10 @@ class WeatherModel {
         let weatherID = weatherDataModel.weather.first?.id
         let weatherDescription = weatherDataModel.weather.first?.description
         let weatherType = weatherDataModel.weather.first?.main
-        let sunset = weatherDataModel.sys.sunset
-        let sunrise = weatherDataModel.sys.sunrise
-        let weatherData = WeatherData(cityName: cityName, temp: temp, pressure: pressure, humidity: humidity, weatherType: weatherType!, weatherDescription: weatherDescription!, sunrise: sunrise, sunset: sunset, weatherID: weatherID!)
+        let sunsetUTC = weatherDataModel.sys.sunset
+        let sunriseUTC = weatherDataModel.sys.sunrise
+        let timezone = weatherDataModel.timezone
+        let weatherData = WeatherData(cityName: cityName, temp: temp, pressure: pressure, humidity: humidity, weatherType: weatherType!, weatherDescription: weatherDescription!, sunriseUTC: sunriseUTC, sunsetUTC: sunsetUTC, timezone: timezone, weatherID: weatherID!)
         return weatherData
     }
     

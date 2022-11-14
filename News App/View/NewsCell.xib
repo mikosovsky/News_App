@@ -41,7 +41,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="accentColor"/>
+                        <color key="backgroundColor" name="AdditionalColor"/>
                         <constraints>
                             <constraint firstItem="ybV-wx-MT8" firstAttribute="top" secondItem="Eul-Nv-cPr" secondAttribute="top" constant="5" id="IcU-q2-fkb"/>
                             <constraint firstAttribute="bottom" secondItem="ybV-wx-MT8" secondAttribute="bottom" constant="5" id="RQQ-yP-4xd"/>
@@ -68,8 +68,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="accentColor">
-            <color red="0.82745098039215681" green="0.82745098039215681" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="AdditionalColor">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

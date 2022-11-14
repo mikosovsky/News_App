@@ -37,6 +37,7 @@ struct WeatherDataModel: Codable {
     let main: Main
     let sys: Sys
     let name: String
+    let timezone: Int64
 }
 
 struct Weather: Codable {
@@ -52,6 +53,6 @@ struct Main: Codable {
 }
 
 struct Sys: Codable {
-    let sunrise: Date
-    let sunset: Date
+    let sunrise: Int64
+    let sunset: Int64
 }
