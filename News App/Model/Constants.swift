@@ -13,7 +13,7 @@ class K {
     }
     class NewsTableView {
         static let cellNibName = "NewsCell"
-        static let cellIdentifier = "ReusableCell"
+        static let cellIdentifier = "NewsCellIdentifier"
     }
     class Segues {
         static let cellToWeb = "cellToWeb"

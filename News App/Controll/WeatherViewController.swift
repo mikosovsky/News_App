@@ -10,6 +10,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var currentWeatherView: UIView!
     let locationManager: CLLocationManager = CLLocationManager()
     let weatherModel: WeatherModel = WeatherModel()
     
@@ -21,6 +22,7 @@ class WeatherViewController: UIViewController {
         weatherModel.delegate = self
         weatherModel.getWeatherData(city: "Poznan")
         weatherModel.getWeatherData(lat: "52.17", lon: "52.3")
+        currentWeatherView.layer.cornerRadius = 20
     }
     
     //func to set up locationManager
