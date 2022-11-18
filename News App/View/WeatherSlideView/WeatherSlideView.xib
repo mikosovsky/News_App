@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherSlideView" customModule="News_App" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8F-49-2so">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U9X-5X-DsZ">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrc-Jy-pbE">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="802"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1n-oV-PfP" customClass="WeatherSingleView" customModule="News_App" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="802"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="q1n-oV-PfP" firstAttribute="leading" secondItem="Hrc-Jy-pbE" secondAttribute="leading" id="02d-mE-n8I"/>
+                                        <constraint firstItem="q1n-oV-PfP" firstAttribute="top" secondItem="Hrc-Jy-pbE" secondAttribute="top" id="4x5-rZ-Knr"/>
+                                        <constraint firstAttribute="bottom" secondItem="q1n-oV-PfP" secondAttribute="bottom" id="fT9-gp-myg"/>
+                                        <constraint firstAttribute="trailing" secondItem="q1n-oV-PfP" secondAttribute="trailing" id="inZ-VD-bAP"/>
+                                    </constraints>
+                                </view>
+                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-5Q-IyA">
+                                    <rect key="frame" x="0.0" y="812" width="393" height="40"/>
+                                    <color key="pageIndicatorTintColor" name="AdditionalColor"/>
+                                    <color key="currentPageIndicatorTintColor" name="textColor"/>
+                                </pageControl>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="Hrc-Jy-pbE" firstAttribute="leading" secondItem="U9X-5X-DsZ" secondAttribute="leading" id="31X-lU-KiA"/>
+                                <constraint firstAttribute="trailing" secondItem="Hrc-Jy-pbE" secondAttribute="trailing" id="P8I-Dx-U1c"/>
+                                <constraint firstItem="pJL-5Q-IyA" firstAttribute="bottom" secondItem="Hrc-Jy-pbE" secondAttribute="bottom" constant="50" id="Q2b-n0-CuM"/>
+                                <constraint firstItem="pJL-5Q-IyA" firstAttribute="centerX" secondItem="U9X-5X-DsZ" secondAttribute="centerX" id="eR6-UH-NKt"/>
+                                <constraint firstItem="Hrc-Jy-pbE" firstAttribute="top" secondItem="U9X-5X-DsZ" secondAttribute="top" id="hH8-aH-7dA"/>
+                                <constraint firstAttribute="bottom" secondItem="pJL-5Q-IyA" secondAttribute="bottom" id="v1S-jO-cf7"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="U9X-5X-DsZ" secondAttribute="bottom" id="75d-fT-q22"/>
+                        <constraint firstItem="U9X-5X-DsZ" firstAttribute="top" secondItem="M8F-49-2so" secondAttribute="top" id="sZ0-wT-jaq"/>
+                        <constraint firstItem="U9X-5X-DsZ" firstAttribute="leading" secondItem="M8F-49-2so" secondAttribute="leading" id="uM5-DM-mA2"/>
+                        <constraint firstAttribute="trailing" secondItem="U9X-5X-DsZ" secondAttribute="trailing" id="vzY-M5-Aam"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="M8F-49-2so" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="583-mj-9jB"/>
+                <constraint firstItem="M8F-49-2so" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Llk-Y7-YsW"/>
+                <constraint firstAttribute="trailing" secondItem="M8F-49-2so" secondAttribute="trailing" id="Yk6-CL-PBB"/>
+                <constraint firstAttribute="bottom" secondItem="M8F-49-2so" secondAttribute="bottom" id="ylH-UD-Iry"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="127" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AdditionalColor">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
