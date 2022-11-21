@@ -7,32 +7,48 @@
 
 import UIKit
 
+protocol WeatherSlideViewDataSource {
+    func returnArrayOfWeatherSingleView() -> [WeatherSingleView]
+}
+
 class WeatherSlideView: UIView {
-
+    
+    @IBOutlet weak var weatherSingleView: WeatherSingleView!
     @IBOutlet weak var pageControl: UIPageControl!
-    let nibName = "WeatherSlideView"
-        
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            commonInit()
+    
+    var dataSource: WeatherSlideViewDataSource?
+    private var weatherSingleViewArray: [WeatherSingleView] = []
+    private let nibName = "WeatherSlideView"
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+        weatherSingleViewArray = dataSource?.returnArrayOfWeatherSingleView() ?? []
+        if weatherSingleViewArray.count == 0 {
+            self.isHidden = true
         }
-        
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            commonInit()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+        weatherSingleViewArray = dataSource?.returnArrayOfWeatherSingleView() ?? []
+        if weatherSingleViewArray.count == 0 {
+            self.isHidden = true
         }
-        
-        func commonInit() {
-            guard let view = loadViewFromNib() else { return }
-            view.frame = self.bounds
-            self.addSubview(view)
-        }
-        
-        func loadViewFromNib() -> UIView? {
-            let nib = UINib(nibName: nibName, bundle: nil)
-            return nib.instantiate(withOwner: self, options: nil).first as? UIView
-        }
-
+    }
+    
+    private func commonInit() {
+        guard let view = loadViewFromNib() else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+    }
+    
+    private func loadViewFromNib() -> UIView? {
+        let nib = UINib(nibName: nibName, bundle: nil)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
+    
     @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
         if pageControl.currentPage > 0 {
             pageControl.currentPage -= 1

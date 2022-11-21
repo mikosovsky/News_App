@@ -258,7 +258,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-5k-izn" customClass="WeatherSlideView" customModule="News_App" customModuleProvider="target">
                                 <rect key="frame" x="10" y="477.66666666666674" width="370" height="263.33333333333326"/>
-                                <color key="backgroundColor" name="AdditionalColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="joH-1h-ICX"/>

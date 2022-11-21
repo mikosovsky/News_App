@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherSlideView" customModule="News_App" customModuleProvider="target">
             <connections>
                 <outlet property="pageControl" destination="pJL-5Q-IyA" id="FPG-gJ-SU5"/>
+                <outlet property="weatherSingleView" destination="q1n-oV-PfP" id="SFN-A2-Hdk"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
