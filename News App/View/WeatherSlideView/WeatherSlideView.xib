@@ -8,7 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherSlideView" customModule="News_App" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WeatherSlideView" customModule="News_App" customModuleProvider="target">
+            <connections>
+                <outlet property="pageControl" destination="pJL-5Q-IyA" id="FPG-gJ-SU5"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -26,6 +30,11 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1n-oV-PfP" customClass="WeatherSingleView" customModule="News_App" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="802"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <gestureRecognizers/>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="7qO-SR-9Dl" appends="YES" id="OKY-LW-RUb"/>
+                                                <outletCollection property="gestureRecognizers" destination="gqx-cM-cii" appends="YES" id="nrG-5m-4PB"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -68,6 +77,16 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="127" y="20"/>
         </view>
+        <swipeGestureRecognizer direction="right" id="7qO-SR-9Dl">
+            <connections>
+                <action selector="swipeRight:" destination="-1" id="zPi-c5-aRj"/>
+            </connections>
+        </swipeGestureRecognizer>
+        <swipeGestureRecognizer direction="left" id="gqx-cM-cii">
+            <connections>
+                <action selector="swipeLeft:" destination="-1" id="Bjj-gX-1tr"/>
+            </connections>
+        </swipeGestureRecognizer>
     </objects>
     <resources>
         <namedColor name="AdditionalColor">

@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherSlideView: UIView {
 
+    @IBOutlet weak var pageControl: UIPageControl!
     let nibName = "WeatherSlideView"
         
         required init?(coder aDecoder: NSCoder) {
@@ -32,4 +33,16 @@ class WeatherSlideView: UIView {
             return nib.instantiate(withOwner: self, options: nil).first as? UIView
         }
 
+    @IBAction func swipeRight(_ sender: UISwipeGestureRecognizer) {
+        if pageControl.currentPage > 0 {
+            pageControl.currentPage -= 1
+        }
+    }
+    
+    @IBAction func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+        if pageControl.currentPage < pageControl.numberOfPages - 1 {
+            pageControl.currentPage += 1
+        }
+    }
+    
 }
