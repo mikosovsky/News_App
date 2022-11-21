@@ -279,6 +279,7 @@
                     <navigationItem key="navigationItem" id="avs-gF-bNe"/>
                     <connections>
                         <outlet property="currentWeatherView" destination="4Zi-wK-bjs" id="VDt-eG-JjH"/>
+                        <outlet property="weatherSlideView" destination="6U7-5k-izn" id="jeH-4F-Rl6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vyv-Hm-er6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

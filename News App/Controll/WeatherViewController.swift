@@ -11,8 +11,10 @@ import CoreLocation
 class WeatherViewController: UIViewController {
 
     @IBOutlet weak var currentWeatherView: UIView!
+    @IBOutlet weak var weatherSlideView: WeatherSlideView!
     let locationManager: CLLocationManager = CLLocationManager()
     let weatherModel: WeatherModel = WeatherModel()
+    var additionalWeathers: [WeatherData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,8 @@ class WeatherViewController: UIViewController {
         weatherModel.getWeatherData(city: "Poznan")
         weatherModel.getWeatherData(lat: "52.17", lon: "52.3")
         currentWeatherView.layer.cornerRadius = 20
+        weatherSlideView.dataSource = self
+        weatherSlideView.reloadData()
     }
     
     //func to set up locationManager
@@ -62,8 +66,18 @@ extension WeatherViewController: WeatherModelDelegate {
         formatter.timeZone = TimeZone(abbreviation: "UTC")
         formatter.dateFormat = "HH:mm"
         let currentTime = formatter.string(from: weatherData.sunset)
+        additionalWeathers.append(weatherData)
         print(currentTime)
         print(weatherData.sunset)
         print(weatherData.cityName)
+        weatherSlideView.reloadData()
+    }
+}
+
+//MARK: - WeatherSlideViewDataSource
+
+extension WeatherViewController: WeatherSlideViewDataSource {
+    func returnArrayOfWeatherSingleView() -> [WeatherData] {
+        return additionalWeathers
     }
 }

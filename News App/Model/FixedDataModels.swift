@@ -63,7 +63,7 @@ struct WeatherData {
         }
     }
     var tempString: String {
-        return String(format: "%.1f", temp)
+        return String(format: "%.1f", temp) + "°C"
     }
     
 }
