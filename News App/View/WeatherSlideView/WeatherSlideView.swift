@@ -25,7 +25,6 @@ class WeatherSlideView: UIView {
         super.init(coder: aDecoder)
         commonInit()
         weatherSingleViewArray = dataSource?.returnArrayOfWeatherSingleView() ?? []
-        print(weatherSingleViewArray.count)
         if weatherSingleViewArray.count == 0 {
             self.isHidden = true
         }
@@ -35,7 +34,6 @@ class WeatherSlideView: UIView {
         super.init(frame: frame)
         commonInit()
         weatherSingleViewArray = dataSource?.returnArrayOfWeatherSingleView() ?? []
-        print(weatherSingleViewArray.count)
         if weatherSingleViewArray.count == 0 {
             self.isHidden = true
         }
@@ -54,7 +52,6 @@ class WeatherSlideView: UIView {
     
     func reloadData() {
         weatherSingleViewArray = dataSource?.returnArrayOfWeatherSingleView() ?? []
-        print(weatherSingleViewArray.count)
         
         if weatherSingleViewArray.count == 0 {
             self.isHidden = true

@@ -55,7 +55,9 @@ class WeatherModel {
         let sunsetUTC = weatherDataModel.sys.sunset
         let sunriseUTC = weatherDataModel.sys.sunrise
         let timezone = weatherDataModel.timezone
-        let weatherData = WeatherData(cityName: cityName, temp: temp, pressure: pressure, humidity: humidity, weatherType: weatherType!, weatherDescription: weatherDescription!, sunriseUTC: sunriseUTC, sunsetUTC: sunsetUTC, timezone: timezone, weatherID: weatherID!)
+        let lat = String(weatherDataModel.coord.lat)
+        let lon = String(weatherDataModel.coord.lon)
+        let weatherData = WeatherData(lon: lon, lat: lat, cityName: cityName, temp: temp, pressure: pressure, humidity: humidity, weatherType: weatherType!, weatherDescription: weatherDescription!, sunriseUTC: sunriseUTC, sunsetUTC: sunsetUTC, timezone: timezone, weatherID: weatherID!)
         return weatherData
     }
     

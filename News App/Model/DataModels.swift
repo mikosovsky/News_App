@@ -33,6 +33,7 @@ struct Source: Codable {
 //MARK: - WeatherDataModel
 
 struct WeatherDataModel: Codable {
+    let coord: Coord
     let weather: [Weather]
     let main: Main
     let sys: Sys
@@ -55,4 +56,9 @@ struct Main: Codable {
 struct Sys: Codable {
     let sunrise: Int64
     let sunset: Int64
+}
+
+struct Coord: Codable {
+    let lat: Double
+    let lon: Double
 }

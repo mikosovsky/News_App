@@ -22,6 +22,8 @@ struct NewsArticleData {
 //MARK: - WeatherData
 
 struct WeatherData {
+    let lon: String
+    let lat: String
     let cityName: String
     let temp: Float
     let pressure: Int
@@ -40,6 +42,20 @@ struct WeatherData {
         let sunsetInt = sunsetUTC + timezone
         let sunset = Date(timeIntervalSince1970: TimeInterval(sunsetInt))
         return sunset
+    }
+    var sunriseTime: String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = "HH:mm"
+        let sunriseTime = formatter.string(from: sunrise)
+        return sunriseTime
+    }
+    var sunsetTime: String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
+        formatter.dateFormat = "HH:mm"
+        let sunsetTime = formatter.string(from: sunset)
+        return sunsetTime
     }
     let weatherID: Int
     var weatherImageName: String {
