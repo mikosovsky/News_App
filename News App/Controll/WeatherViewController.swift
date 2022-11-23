@@ -87,7 +87,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
 
 extension WeatherViewController: WeatherModelDelegate {
     func didDecodedData(_ weatherData: WeatherData) {
-
+        //Setting weather in current localization
         if weatherData.lat == coordinations["lat"] && weatherData.lon == coordinations["lon"]
         {
             cityLabel.text = weatherData.cityName
@@ -98,6 +98,7 @@ extension WeatherViewController: WeatherModelDelegate {
             sunriseTime.text = weatherData.sunriseTime
             sunsetTime.text = weatherData.sunsetTime
         }
+        //Checking for duplicated place in array
         var sameCity = false
         additionalWeathers.forEach { weather in
             if weather.cityName == weatherData.cityName {
@@ -106,7 +107,6 @@ extension WeatherViewController: WeatherModelDelegate {
         }
         if sameCity == false {
             additionalWeathers.append(weatherData)
-            additionalWeathers.reverse()
             weatherSlideView.reloadData()
         }
         
