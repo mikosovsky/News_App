@@ -40,6 +40,14 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        if locationManager.authorizationStatus == CLAuthorizationStatus.denied {
+            let alert = UIAlertController(title: "We need your localization to show current weather", message: "If you want to give us access to your localization press \"Go to settings\"", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Go to settings", style: .default, handler: { alert in
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+            }))
+            self.present(alert, animated: true)
+        }
     }
     
     //func to set up weatherModel
@@ -57,7 +65,9 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
+        if manager.authorizationStatus == CLAuthorizationStatus.authorizedWhenInUse {
+            locationManager.requestLocation()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -80,7 +90,6 @@ extension WeatherViewController: WeatherModelDelegate {
 
         if weatherData.lat == coordinations["lat"] && weatherData.lon == coordinations["lon"]
         {
-            print("Jestem tutaj")
             cityLabel.text = weatherData.cityName
             tempLabel.text = weatherData.tempString
             let config = UIImage.SymbolConfiguration.preferringMulticolor()
@@ -89,8 +98,18 @@ extension WeatherViewController: WeatherModelDelegate {
             sunriseTime.text = weatherData.sunriseTime
             sunsetTime.text = weatherData.sunsetTime
         }
-        additionalWeathers.append(weatherData)
-        weatherSlideView.reloadData()
+        var sameCity = false
+        additionalWeathers.forEach { weather in
+            if weather.cityName == weatherData.cityName {
+                sameCity = true
+            }
+        }
+        if sameCity == false {
+            additionalWeathers.append(weatherData)
+            additionalWeathers.reverse()
+            weatherSlideView.reloadData()
+        }
+        
     }
 }
 
