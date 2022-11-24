@@ -9,21 +9,46 @@ import UIKit
 
 class WeatherSettingsViewController: UIViewController {
 
+    @IBOutlet weak var searchTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        searchTextField.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func donePressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
     }
-    */
+    
+}
 
+//MARK: - UITextFieldDelegate
+
+extension WeatherSettingsViewController: UITextFieldDelegate {
+    
+    @IBAction func searchPressed(_ sender: UIButton) {
+        searchTextField.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.endEditing(true)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let phrase = textField.text {
+            
+        }
+        textField.text = ""
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            return false
+        }
+    }
 }

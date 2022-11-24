@@ -17,5 +17,6 @@ class K {
     }
     class Segues {
         static let cellToWeb = "cellToWeb"
+        static let weatherToSettings = "weatherToSettings"
     }
 }

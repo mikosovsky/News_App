@@ -58,6 +58,12 @@ class WeatherViewController: UIViewController {
         weatherModel.getWeatherData(city: "New+York")
     }
 
+    
+    @IBAction func settingsPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: K.Segues.weatherToSettings, sender: nil)
+    }
+    
+    
 }
 
 //MARK: - CLLocationManagerDelegate
